@@ -1,0 +1,81 @@
+###1.GitHub
+注册GitHub账号
+creat new repository
+Repository name :git-test
+public,并勾选readme.md
+###2.公私钥
+新建文件夹git-test
+右键git bash here
+输入
+```
+git config -- global user.name "你的用户名"
+git config -- global user.email "你的邮箱"
+```
+继续输入：ssh-keygen -t rsa -b 4096 -C "你的邮箱"
+window系统用记事本打开User/.ssh/id_rsa.pub复制
+点击GitHub个人账号-Settings-SSH and GPG keys-new ssh key 黏贴公钥，
+建立本机仓库与远程仓库的联系。
+###3.clone
+点击GitHub的git-test的clone or download 复制git地址
+```
+git clone git@github.com:xxxx/git-test.git
+cd  git-test
+ls
+```
+###4.push
+```
+touch a.md
+git add .
+git status
+git commit -am "add a.md"
+git push origin master
+```
+github刷新进入settig--github page--source更改为master branch，点击链接预览效果
+
+
+
+如果一开始不选用readme.md,即把本地仓库上传到github，则git里面应当输入
+```
+echo "# git-test">> README.md         /*可省略*/
+git init
+git add .
+git commit -m "first commit"
+git remote add origin git@github.com:xxxx/git-test.git
+git push -u origin master
+```
+###5.分支操作
+在github上a.md加入hello,使远程仓库和本地仓库不一致
+```
+解决方法
+git pull  /*将远程仓库的同步到本地*/
+             /*起冲突时会进入vim编辑器，修改编辑*/
+：wq
+git add .
+git commit -am "merge"
+git push
+```
+
+新建分支和合并分支
+```
+git branch -a     /*查看分支*/
+git branch dev
+git checkout dev
+vim a.md        /*进入vim加入world*/
+git add .
+git commit -am  "add  world"
+git push origin dev
+git checkout master
+git merge dev     /*dev合并到master*/
+````
+
+冲突
+当自己和别人改同一个文件的同一个地方，在执行git pull时更新本地合并时会出现冲突
+
+>git pull
+failed merge,vim会自动保存两个差别
+可以进入vim查看和删改
+
+
+###6.回溯版本
+git log 查看版本
+git reset --hard 版本号前7位
