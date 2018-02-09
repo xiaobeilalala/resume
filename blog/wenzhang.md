@@ -1,9 +1,12 @@
 ###1.GitHub
+
 注册GitHub账号
 creat new repository
 Repository name :git-test
 public,并勾选readme.md
+
 ###2.公私钥
+
 新建文件夹git-test
 右键git bash here
 输入
@@ -15,14 +18,18 @@ git config -- global user.email "你的邮箱"
 window系统用记事本打开User/.ssh/id_rsa.pub复制
 点击GitHub个人账号-Settings-SSH and GPG keys-new ssh key 黏贴公钥，
 建立本机仓库与远程仓库的联系。
+
 ###3.clone
+
 点击GitHub的git-test的clone or download 复制git地址
 ```
 git clone git@github.com:xxxx/git-test.git
 cd  git-test
 ls
 ```
+
 ###4.push
+
 ```
 touch a.md
 git add .
@@ -44,6 +51,7 @@ git remote add origin git@github.com:xxxx/git-test.git
 git push -u origin master
 ```
 ###5.分支操作
+
 在github上a.md加入hello,使远程仓库和本地仓库不一致
 ```
 解决方法
